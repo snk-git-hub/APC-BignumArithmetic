@@ -5,6 +5,7 @@
 #include <stdlib.h>
 
 #include "apc.h"
+int _CRT_glob = 0;
 int print_answer(Dlist **headR)
 {
 	if (headR == NULL) return FAILURE;
@@ -62,11 +63,23 @@ int validate_numbers( char *str) {
 	}
    return SUCCESS;
 }
-int validate_number_cla(int argc,char *argv[]) {
-if (argc!=4) {
-    fprintf(stderr, "usage: %s [number] [operator] [number]\n", argv[0]);
-	return FAILURE;
-}
+int validate_number_cla(int argc, char *argv[])
+{
+	// printf("argc = %d\n", argc);
+	// printf("argv[1] = %s\n", argv[1]);
+	// printf("argv[2] = %s\n", argv[2]);
+	// printf("argv[3] = %s\n", argv[3]);
+	// printf("operator = %c\n", argv[2][0]);
+
+	if (argv[2][0] != '+' &&
+		argv[2][0] != '-' &&
+		argv[2][0] != '*' &&
+		argv[2][0] != '/')
+	{
+		printf("usage: %s [number] [operator] [number]\n", argv[0]);
+		return FAILURE;
+	}
+
 	return SUCCESS;
 }
 int main(int argc, char *argv[])
@@ -122,8 +135,12 @@ int main(int argc, char *argv[])
 				break;
 			case '*':	
 				/* call the function to perform the multiplication operation */
-				printf("%d", multiplication(&head1,&tail1,&head2,&tail2,&headR));
-
+				multiplication(&head1,&tail1,&head2,&tail2,&headR);
+				printf("answer:\n");
+				print_answer(&headR);
+				free_list(&headR);
+				free_list(&head1);
+				free_list(&head2);
 				break;
 			case '/':	
 				/* call the function to perform the division operation */
