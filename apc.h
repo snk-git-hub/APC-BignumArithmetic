@@ -13,7 +13,7 @@ typedef struct node
 	data_t data;
 	struct node *next;
 }Dlist;
-
+void free_list(Dlist **head);
 /* Include the prototypes here */
 int addition(Dlist **head1, Dlist **tail1, Dlist **head2, Dlist **tail2, Dlist **headR);
 int subtraction(Dlist **head1, Dlist **tail1, Dlist **head2, Dlist **tail2, Dlist **headR);
