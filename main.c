@@ -118,20 +118,13 @@ int main(int argc, char *argv[])
 				printf("answer:\n");
 				print_answer(&headR);
 				free_list(&headR);
-				free_list(&head1);
-				free_list(&head2);
 				break;
-			case '-':	
-				/* call the function to perform the subtraction operation */
-				// int sub = subtraction(&head1,&tail1,&head2,&tail2,&headR);
-				// printf("answer:%d\n",sub);
-
+			case '-':
 				subtraction(&head1,&tail1,&head2,&tail2,&headR);
 				printf("answer:\n");
 				print_answer(&headR);
 				free_list(&headR);
-				free_list(&head1);
-				free_list(&head2);
+				break;
 				break;
 			case '*':	
 				/* call the function to perform the multiplication operation */
@@ -139,12 +132,13 @@ int main(int argc, char *argv[])
 				printf("answer:\n");
 				print_answer(&headR);
 				free_list(&headR);
-				free_list(&head1);
-				free_list(&head2);
 				break;
 			case '/':	
 				/* call the function to perform the division operation */
-				printf("%d", division(&head1,&tail1,&head2,&tail2,&headR));
+				division(&head1,&tail1,&head2,&tail2,&headR);
+				printf("answer:\n");
+				print_answer(&headR);
+				free_list(&headR);
 				break;
 			default:
 				printf("Invalid Input:-( Try again...\n");
@@ -152,6 +146,7 @@ int main(int argc, char *argv[])
 		printf("Want to continue? Press [yY | nN]: ");
 		scanf("\n%c", &option);
 	}while (option == 'y' || option == 'Y');
-
+	free_list(&head1);
+	free_list(&head2);
 	return 0;
 }

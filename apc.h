@@ -15,6 +15,7 @@ typedef struct node
 }Dlist;
 void free_list(Dlist **head);
 /* Include the prototypes here */
+int compare(const Dlist *head_a, const Dlist *head_b);
 int addition(Dlist **head1, Dlist **tail1, Dlist **head2, Dlist **tail2, Dlist **headR);
 int subtraction(Dlist **head1, Dlist **tail1, Dlist **head2, Dlist **tail2, Dlist **headR);
 int division(Dlist **head1, Dlist **tail1, Dlist **head2, Dlist **tail2, Dlist **headR);
